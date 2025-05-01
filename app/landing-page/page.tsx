@@ -1,24 +1,23 @@
-'use client';
+'use client'; // Add this directive at the top to make it a client component
 
 import React from 'react';
 import Link from 'next/link';
-import { 
-  Container, 
-  Typography,  
-  Card, 
-  CardContent, 
-  CardMedia, 
+import {
+  Container,
+  Typography,
+  Card,
+  CardContent,
+  CardMedia,
   Box,
-  Button
+  Button,
 } from '@mui/material';
-import { Grid as MuiGrid } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useImageCache } from '../hooks/useImageCache';
 import { galleryData } from '../data/galleryData';
 
 const LandingPage = () => {
   const { getCachedImage } = useImageCache();
-
+  
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
       <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
@@ -32,22 +31,34 @@ const LandingPage = () => {
           Back to Home
         </Button>
       </Box>
-
+      
       <Typography variant="h2" component="h1" gutterBottom align="left" sx={{ fontWeight: 'bold', mb: 1 }}>
         Image Gallery
       </Typography>
-
+      
       <Typography variant="body1" sx={{ mb: 4, color: 'text.secondary' }} align="left">
         All images are locally stored and properly cached to reduce bandwidth usage.
       </Typography>
-
-      <MuiGrid container spacing={3}>
+      
+      {/* Use Box-based layout to avoid Grid issues */}
+      <Box sx={{ 
+        display: 'flex', 
+        flexWrap: 'wrap', 
+        gap: 3, 
+        marginX: -1.5 
+      }}>
         {galleryData.map((item) => (
-          <MuiGrid item xs={12} sm={6} md={4} key={item.id}>
+          <Box 
+            key={item.id} 
+            sx={{ 
+              width: { xs: '100%', sm: '45%', md: '30%' },
+              padding: 1.5,
+              boxSizing: 'border-box'
+            }}
+          >
             <Card sx={{ 
               height: '100%',
-              width: '1000px', 
-              display: 'flex', 
+              display: 'flex',
               flexDirection: 'column',
               transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
               '&:hover': {
@@ -57,7 +68,7 @@ const LandingPage = () => {
             }}>
               <CardMedia
                 component="img"
-                height="400px"
+                height="400"
                 image={getCachedImage(`/images/${item.image}`)}
                 alt={item.title}
                 sx={{ objectFit: 'cover' }}
@@ -71,9 +82,9 @@ const LandingPage = () => {
                 </Typography>
               </CardContent>
             </Card>
-          </MuiGrid>
+          </Box>
         ))}
-      </MuiGrid>
+      </Box>
     </Container>
   );
 };
