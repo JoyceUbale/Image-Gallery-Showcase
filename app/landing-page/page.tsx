@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { 
   Container, 
@@ -12,19 +12,12 @@ import {
   Button
 } from '@mui/material';
 import { Grid as MuiGrid } from '@mui/material';
-
-
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useImageCache } from '../hooks/useImageCache';
-import { galleryData } from '../data/galleryData'
+import { galleryData } from '../data/galleryData';
 
 const LandingPage = () => {
   const { getCachedImage } = useImageCache();
-  const [imagesLoaded, setImagesLoaded] = useState(false);
-
-  useEffect(() => {
-    setImagesLoaded(true);
-  }, []);
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
@@ -66,7 +59,6 @@ const LandingPage = () => {
                 component="img"
                 height="400px"
                 image={getCachedImage(`/images/${item.image}`)}
-
                 alt={item.title}
                 sx={{ objectFit: 'cover' }}
               />
