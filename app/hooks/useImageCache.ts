@@ -1,9 +1,7 @@
 'use client';
 
-// Cache expiration time (24 hours in milliseconds)
 const CACHE_EXPIRATION = 24 * 60 * 60 * 1000;
 
-// In-memory cache
 const memoryCache = new Map<string, string>();
 
 export const useImageCache = () => {

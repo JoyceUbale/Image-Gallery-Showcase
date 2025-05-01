@@ -1,4 +1,3 @@
-// data/galleryData.ts
 export interface GalleryItem {
     id: number;
     title: string;

@@ -1,4 +1,4 @@
-'use client'; // Add this directive at the top to make it a client component
+'use client';
 
 import React from 'react';
 import Link from 'next/link';
@@ -40,7 +40,6 @@ const LandingPage = () => {
         All images are locally stored and properly cached to reduce bandwidth usage.
       </Typography>
       
-      {/* Use Box-based layout to avoid Grid issues */}
       <Box sx={{ 
         display: 'flex', 
         flexWrap: 'wrap', 
