@@ -15,8 +15,8 @@ import { Grid as MuiGrid } from '@mui/material';
 
 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { useImageCache } from '@/app/hooks/useImageCache';
-import { galleryData } from '@/app/data/galleryData';
+import { useImageCache } from '../hooks/useImageCache';
+import { galleryData } from '../data/galleryData'
 
 const LandingPage = () => {
   const { getCachedImage } = useImageCache();
